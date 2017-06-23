@@ -1,0 +1,43 @@
+﻿@model ASP.NET_FinalTermExam.Models.Cust
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <form action="~/Customers/Index" method="post">
+        <table class="table table-striped">
+            <tr><td>客戶編號</td><td>@Html.TextBox("CustomerID")</td></tr>
+            <tr><td>客戶名稱</td><td>@Html.TextBox("CompanyName")</td></tr>
+            <tr><td>聯絡人姓名</td><td>@Html.TextBox("ContactName")</td></tr>
+            <tr><td>聯絡人職稱</td><td>@Html.DropDownList("contactTitle", (List<SelectListItem>)ViewBag.contactTitleSelect)</td></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="查詢" />
+                    <input type="button" onclick="javascript: location.href = 'Index'" value="清除" />
+                    <input type="button" onclick="javascript: location.href = 'NewCustomers'" value="新增客戶" />
+                </td>
+            </tr>
+        </table>
+    </form>
+        <table class="table table-striped">
+            <tr>
+                <td>編號</td>
+                <td>名稱</td>
+                <td>聯絡人姓名</td>
+                <td>聯絡人職稱</td>
+                <td></td>
+                <td></td>
+            </tr>
+            @foreach (var item in (List<ASP.NET_FinalTermExam.Models.Cust>)ViewBag.searchResult)
+            {
+                <tr>
+                    <td>@item.CustomerID</td>
+                    <td>@item.CompanyName</td>
+                    <td>@item.ContactName</td>
+                    <td>@item.ContactTitle</td>
+                    <td>修改</td>
+                    <td>刪除</td>
+                </tr>
+            }
+        </table>
+</div>

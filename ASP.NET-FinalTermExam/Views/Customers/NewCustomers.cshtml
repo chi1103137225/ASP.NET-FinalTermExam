@@ -1,0 +1,62 @@
+﻿@model ASP.NET_FinalTermExam.Models.Cust
+@{
+    ViewBag.Title = "NewCustomers";
+}
+<div>
+    @using (Html.BeginForm("NewCustomersFinish", "Customers", FormMethod.Post, new { id = "form1" }))
+    {
+        <table class="table table-striped">
+            <tr>
+                <td>名稱</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.CompanyName)</td>
+            </tr>
+            <tr>
+                <td>聯絡人姓名</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.ContactName)</td>
+            </tr>
+            <tr>
+                <td>聯絡人職稱</td>
+                <td colspan="3">@Html.DropDownListFor(Model => Model.ContactTitle, (List<SelectListItem>)ViewBag.contactTitleSelect)</td>
+            </tr>
+            <tr>
+                <td>建立日期</td>
+                <td colspan="3">@Html.TextBoxFor(Model => Model.CreationDate, "{0:yyyy-MM-dd}", new { @type = "date" })</td>
+            </tr>
+            <tr>
+                <td>國家</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.Country)</td>
+            </tr>
+            <tr>
+                <td>城市</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.City)</td>
+            </tr>
+            <tr>
+                <td>區域</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.Region)</td>
+            </tr>
+            <tr>
+                <td>郵遞區號</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.PostalCode)</td>
+            </tr>
+            <tr>
+                <td>地址</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.Address)</td>
+            </tr>
+            <tr>
+                <td>電話</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.Phone)</td>
+            </tr>
+            <tr>
+                <td>傳真</td>
+                <td colspan="3">@Html.TextBoxFor(model => model.Fax)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="3">
+                    <input type="submit" value="存檔" />
+                    <input type="button" onclick="history.back()" value="回前一頁" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>
